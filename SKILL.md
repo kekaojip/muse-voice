@@ -1,6 +1,6 @@
 ---
 name: muse-voice
-description: Give your Muse agent a voice — reply to chat messages with spoken voice notes and send stickers. Reads the user's memory first to learn how they like to be spoken to, so voice, stickers and text follow each person's own preference. It can also start a conversation with a spoken greeting or reminder the user asked for. Uses Volcano Engine seed-tts-2.0 (your own API key) for Chinese voice synthesis. Use when the user asks the agent to speak, send a voice message, read something aloud, or send a sticker/meme, or when you want to offer voice replies.
+description: 让你的 Muse 助手开口说话——用语音消息回复聊天、发表情包。先读用户的记忆，了解每个人喜欢怎么被回复，语音、表情包还是文字都按个人的偏好来。还能主动开口，比如用户约好的早上问候或提醒。用火山引擎 seed-tts-2.0（你自己的 API key）合成中文语音。用户让助手说话、发语音消息、念一段文字、发表情包，或者你想提供语音回复时用这个 skill。
 ---
 
 # Muse Voice
