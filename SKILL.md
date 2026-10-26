@@ -1,6 +1,6 @@
 ---
 name: muse-voice
-description: Give your Muse agent a voice — reply to chat messages with spoken voice notes and send stickers. Uses Volcano Engine seed-tts-2.0 (your own API key) for Chinese voice synthesis. Use when the user asks the agent to speak, send a voice message, read something aloud, or send a sticker/meme, or when you want to offer voice replies.
+description: Give your Muse agent a voice — reply to chat messages with spoken voice notes and send stickers. Reads the user's memory first to learn how they like to be spoken to, so voice, stickers and text follow each person's own preference. Uses Volcano Engine seed-tts-2.0 (your own API key) for Chinese voice synthesis. Use when the user asks the agent to speak, send a voice message, read something aloud, or send a sticker/meme, or when you want to offer voice replies.
 ---
 
 # Muse Voice
@@ -25,6 +25,39 @@ voice notes and attaches them in chat. It can also make and send stickers.
    Default is the sweet female voice
    `zh_female_sajiaoxuemei_uranus_bigtts`. See `voices.md` for the
    tested list.
+
+## Know the user first (memory)
+
+Before the first voice reply — and once at the start of each new
+conversation — read the user's memory to learn how they like to be
+spoken to. The voice is personal: the same skill should sound
+different for different people, because their memory says so.
+
+1. Read the long-term memory first: `MEMORY.md` and `USER.md`, plus
+   a memory search for communication preferences (try: voice / 语音 /
+   喜欢 / 偏好 / 发语音 / stickers). Look for:
+   - What to call them (name, nickname).
+   - Voice: do they want voice replies, voice for proactive messages,
+     or text only? Which voice do they like?
+   - Stickers: do they like them, which style?
+   - Tone: short or detailed, playful or straight?
+   - What they care about (hobbies, projects, people) — so proactive
+     messages have something real to say.
+   - Scope: is voice only for one chat, or everywhere?
+2. Use what you find. If memory says the user likes voice, speak
+   without asking again. If it says text only, stay in text and
+   don't keep offering voice.
+3. If memory says nothing about voice yet, ask once, in one short
+   message ("你喜欢我回语音还是文字？"), or offer voice on the
+   first reply and watch what they do. Then save the answer to
+   memory right away, so the next conversation already knows.
+4. Keep learning: every time the user corrects the format
+   ("发文字吧", "以后都发语音", "别发表情包"), update the memory
+   preference immediately. Don't make them say it twice.
+5. Memory stays on the user's own Muse. Never send memory contents
+   to any service. The TTS API only ever receives the text being
+   spoken — never the memory itself. Each user's Muse reads only
+   their own memory, never anyone else's.
 
 ## How to send a voice reply
 
@@ -83,6 +116,9 @@ Rules:
   fields, and giving it a new `name`. No code changes needed.
 
 ## When to use voice
+
+The memory preference decides first (see "Know the user first").
+If memory says voice, speak; if it says text only, stay in text.
 
 - The user asked for a voice message, or said "speak this" / "read it aloud".
 - Offer voice once when it would clearly help (a long explanation, a

@@ -10,6 +10,9 @@ messages with spoken voice notes — and send stickers.
   the MP3 as a voice message, always with a text transcript.
 - **Stickers**: the agent can generate and send sticker-style images on
   request.
+- **Memory-aware**: reads your Muse memory first, so it knows how you
+  like to be spoken to — voice, stickers or text — instead of asking
+  every time.
 
 ## Install (3 steps)
 
