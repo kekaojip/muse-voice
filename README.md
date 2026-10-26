@@ -13,6 +13,8 @@ messages with spoken voice notes — and send stickers.
 - **Memory-aware**: reads your Muse memory first, so it knows how you
   like to be spoken to — voice, stickers or text — instead of asking
   every time.
+- **Proactive voice**: can start the conversation with a spoken
+  greeting or reminder you asked for, not just reply to you.
 
 ## Install (3 steps)
 

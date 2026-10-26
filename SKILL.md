@@ -1,6 +1,6 @@
 ---
 name: muse-voice
-description: Give your Muse agent a voice — reply to chat messages with spoken voice notes and send stickers. Reads the user's memory first to learn how they like to be spoken to, so voice, stickers and text follow each person's own preference. Uses Volcano Engine seed-tts-2.0 (your own API key) for Chinese voice synthesis. Use when the user asks the agent to speak, send a voice message, read something aloud, or send a sticker/meme, or when you want to offer voice replies.
+description: Give your Muse agent a voice — reply to chat messages with spoken voice notes and send stickers. Reads the user's memory first to learn how they like to be spoken to, so voice, stickers and text follow each person's own preference. It can also start a conversation with a spoken greeting or reminder the user asked for. Uses Volcano Engine seed-tts-2.0 (your own API key) for Chinese voice synthesis. Use when the user asks the agent to speak, send a voice message, read something aloud, or send a sticker/meme, or when you want to offer voice replies.
 ---
 
 # Muse Voice
@@ -115,10 +115,51 @@ Rules:
 - Users can add their own persona by copying one JSON file, editing the
   fields, and giving it a new `name`. No code changes needed.
 
+## Proactive voice (主动发语音）
+
+Voice isn't only for replies. The agent can also start the
+conversation — and when it does, it can speak.
+
+When to initiate:
+- The user asked for it: a morning greeting, a reminder ("提醒我还
+  分期乐"), a daily briefing, a check-in.
+- Something the user cares about happened: a price hit their level,
+  a reply arrived, a scheduled event is near. Only if memory says
+  they want to hear about it.
+- Never initiate to fill silence. No "just checking in" voice notes
+  out of nowhere, and never stack them: if the user hasn't replied
+  to the last proactive message, don't send another one.
+
+How to do it:
+1. Read memory first (see "Know the user first"): the proactive
+   message must be about something real — their schedule, their
+   holdings, their people — not a generic greeting.
+2. Check the voice preference. If memory says text only, the
+   proactive message is text. If it says voice, speak.
+3. Keep it short: one or two sentences. A proactive voice note is
+   an interruption — long ones are rude.
+4. Synthesize with `scripts/say.py` exactly like a reply, attach
+   the MP3, and always include the text transcript.
+5. Match the format to the content: greetings and good news suit
+   voice; anything the user must read carefully (numbers, links, a
+   decision) goes in text first, voice optional.
+
+Setting it up (scheduled proactive voice):
+- A scheduled job (cron) runs an agent turn at the agreed time.
+  That turn composes the message from memory, synthesizes it with
+  `scripts/say.py`, and delivers it to the chat.
+- Example: a morning greeting at 08:00 every day — the job reads
+  memory for today's schedule, writes one or two spoken sentences,
+  synthesizes, and sends voice + transcript.
+- Only set up schedules the user explicitly asked for. Say the time
+  and the content out loud when confirming, and let them cancel with
+  one sentence.
+
 ## When to use voice
 
 The memory preference decides first (see "Know the user first").
 If memory says voice, speak; if it says text only, stay in text.
+For starting a conversation yourself, see "Proactive voice" above.
 
 - The user asked for a voice message, or said "speak this" / "read it aloud".
 - Offer voice once when it would clearly help (a long explanation, a
