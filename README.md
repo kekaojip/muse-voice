@@ -13,10 +13,12 @@ messages with spoken voice notes — and send stickers.
 
 ## Install (3 steps)
 
+Listed on skills.sh: https://skills.sh/kekaojip/muse-voice/muse-voice
+
 1. Clone this repo and install the skill:
    ```bash
-   git clone https://github.com/<you>/muse-voice.git
-   npx skills add <you>/muse-voice -g
+   git clone https://github.com/kekaojip/muse-voice.git
+   npx skills add kekaojip/muse-voice -g
    ```
    Or copy the folder into `~/.claude/skills/muse-voice`.
 2. Get a Volcano Engine API key: https://www.volcengine.com/ — console,
