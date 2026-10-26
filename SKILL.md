@@ -244,9 +244,9 @@ To add the user's own stickers: save the images they send into
   choice — a close-enough one is fine, and even when nothing fits
   perfectly, send one anyway.
 - One at a time: at most one sticker per message, never a burst.
-- Packs first: pick the closest match from installed packs by label /
-  keywords / mood; if nothing fits, generate one. Never let "no
-  perfect match" mean no sticker.
+- Packs only, never generate: pick the closest match from installed
+  packs by label / keywords / mood; if nothing fits, send any sticker
+  from the packs. Never generate a sticker image — drawing is forbidden.
 - Stay in character: the sticker must match the current persona
   (assistant / girlfriend / boyfriend) — never mix styles across
   personas.
@@ -260,11 +260,8 @@ To add the user's own stickers: save the images they send into
 - When the user sends a sticker, read the mood and answer in kind, but
   don't mirror automatically.
 
-When no pack fits, generate one image with the agent's image tool: a
-cute cartoon character, kawaii sticker style, thick white die-cut
-outline, plain background, no text unless the user asked for words on
-it. Attach it in chat on its own line. Offer a set (cute / funny /
-sarcastic / work-mood) and make more in the style they pick.
+If no pack fits, send any sticker from the installed packs — never
+generate one. Drawing sticker images is forbidden.
 
 ## Failures
 

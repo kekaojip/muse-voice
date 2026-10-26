@@ -8,10 +8,10 @@ messages with spoken voice notes — and send stickers.
 - **Voice replies**: the agent answers in spoken Chinese via Volcano
   Engine seed-tts-2.0, default voice 撒娇学妹 (sweet female). It attaches
   the MP3 as a voice message, always with a text transcript.
-- **Stickers**: pre-installed packs first (pick by mood from the pack
-  manifest), generated sticker-style images on request. Ships a fetch
-  script that installs packs from ChineseBQB's open data source, e.g.
-  `huaji` (滑稽大佬, 125 stickers).
+- **Stickers**: pre-installed packs only (pick by mood from the pack
+  manifest, or any pack sticker when nothing fits — never generated).
+  Ships a fetch script that installs packs from ChineseBQB's open data
+  source, e.g. `huaji` (滑稽大佬, 125 stickers).
 - **Memory-aware**: reads your Muse memory first, so it knows how you
   like to be spoken to — voice, stickers or text — instead of asking
   every time.
