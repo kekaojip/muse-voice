@@ -22,8 +22,8 @@ voice notes and attaches them in chat. It can also make and send stickers.
    Standalone fallback (running `scripts/say.py` outside Muse): copy
    `.env.example` to `.env`, fill in `VOLCENGINE_API_KEY`, and export it.
 3. Pick a voice in `.env` (`MUSE_VOICE_SPEAKER`) or by asking Muse.
-   Default is the sweet female voice
-   `zh_female_sajiaoxuemei_uranus_bigtts`. See `voices.md` for the
+   Default is 熊二
+   `zh_male_xionger_uranus_bigtts`. See `voices.md` for the
    tested list.
 
 ## Know the user first (memory)
@@ -132,8 +132,8 @@ with a human-readable `voice_label` beside it.
 
 Built-in personas:
 
-- `assistant.json` (default): 干练贴心的小助手，voice 撒娇学妹
-  `zh_female_sajiaoxuemei_uranus_bigtts`.
+- `assistant.json` (default): 干练贴心的小助手，voice 熊二
+  `zh_male_xionger_uranus_bigtts`.
 - `girlfriend.json`: 温柔甜美的女友，voice 女友音（定制复刻）
   `S_58godekj2` — the author's own cloned voice; it only works with
   the author's Volcano account. Other users: replace `speaker` with
@@ -211,8 +211,9 @@ For starting a conversation yourself, see "Proactive voice" above.
 
 ## Voice choices
 
-Default: `zh_female_sajiaoxuemei_uranus_bigtts` (sweet female, 撒娇学妹).
+Default: `zh_male_xionger_uranus_bigtts` (熊二).
 Alternatives in `voices.md` — all verified against the live API:
+`zh_female_sajiaoxuemei_uranus_bigtts` (sweet female, 撒娇学妹),
 `zh_female_tianmeixiaoyuan_uranus_bigtts` (sweet campus),
 `zh_female_wenrouxiaoya_uranus_bigtts` (gentle), and for video narration
 `zh_male_liufei_uranus_bigtts` (male narrator, 刘飞). Let the user pick by

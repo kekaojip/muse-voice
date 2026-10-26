@@ -19,11 +19,11 @@ Setup (standalone only):
 
 Usage:
   python3 say.py --text-file hello.txt --output hello.mp3
-  python3 say.py --text-file hello.txt --output hello.mp3 --speaker zh_female_sajiaoxuemei_uranus_bigtts
+  python3 say.py --text-file hello.txt --output hello.mp3 --speaker zh_male_xionger_uranus_bigtts
   python3 say.py --text-file hello.txt --output hello.mp3 --dry-run
 
-Defaults: speaker zh_female_sajiaoxuemei_uranus_bigtts
-(sweet female voice), mp3 at 24000 Hz. Text limit 1500 characters per call.
+Defaults: speaker zh_male_xionger_uranus_bigtts
+(熊二), mp3 at 24000 Hz. Text limit 1500 characters per call.
 Resource is auto-selected: preset voices use seed-tts-2.0, console-cloned
 voices (speaker IDs starting with "S_") use seed-icl-2.0 — enable both
 models in the console or cloned voices fail (see README).
@@ -48,7 +48,7 @@ ALLOWED_HOSTS = ["openspeech.bytedance.com"]
 # call (55000000 resource mismatch / HTTP 403).
 RESOURCE_PRESET = "seed-tts-2.0"
 RESOURCE_CLONED = "seed-icl-2.0"
-DEFAULT_SPEAKER = "zh_female_sajiaoxuemei_uranus_bigtts"
+DEFAULT_SPEAKER = "zh_male_xionger_uranus_bigtts"
 
 
 def resource_for_speaker(speaker: str) -> str:
