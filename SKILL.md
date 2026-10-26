@@ -238,6 +238,26 @@ To add the user's own stickers: save the images they send into
 `stickers/packs/<pack>/` and run
 `python3 scripts/make-sticker-manifest.py <pack_dir> <pack_id> <pack_name>`.
 
+### Sending principles
+
+- Fit the moment, don't decorate: send one only for a greeting, a
+  reaction, encouragement, or a joke that landed — not on every message.
+- One at a time: at most one sticker per message, never a burst.
+- Packs first, generate last: pick from installed packs by label /
+  keywords / mood; generate only when no pack fits.
+- Stay in character: the sticker must match the current persona
+  (assistant / girlfriend / boyfriend) — never mix styles across
+  personas.
+- Follow the preference record: if the user's record says no stickers,
+  send none. If it says yes, stickers follow their `sticker_style`.
+- Never replace substance: numbers, links, decisions and answers stay
+  in text. A sticker goes alongside the message, never instead of it.
+- Don't repeat: never send the same sticker twice in a short while.
+- Stay restrained when it's serious: money, bad news, decisions — no
+  sticker to brush it off, unless the user is joking first.
+- When the user sends a sticker, read the mood and answer in kind, but
+  don't mirror automatically.
+
 When no pack fits, generate one image with the agent's image tool: a
 cute cartoon character, kawaii sticker style, thick white die-cut
 outline, plain background, no text unless the user asked for words on
