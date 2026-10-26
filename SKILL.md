@@ -240,13 +240,13 @@ To add the user's own stickers: save the images they send into
 
 ### Sending principles
 
-- Optional, never required: a reply never needs a sticker. Send one
-  only when it fits the moment really well — a greeting, a reaction,
-  encouragement, or a joke that landed. Not on every message.
+- Send freely: every reply can carry a sticker. Don't overthink the
+  choice — a close-enough one is fine, and even when nothing fits
+  perfectly, send one anyway.
 - One at a time: at most one sticker per message, never a burst.
-- Packs first, generate last: pick from installed packs by label /
-  keywords / mood; generate a new one only when the user explicitly
-  asks for a sticker.
+- Packs first: pick the closest match from installed packs by label /
+  keywords / mood; if nothing fits, generate one. Never let "no
+  perfect match" mean no sticker.
 - Stay in character: the sticker must match the current persona
   (assistant / girlfriend / boyfriend) — never mix styles across
   personas.
