@@ -1,0 +1,11 @@
+{
+  "name": "KQ",
+  "persona": "assistant",
+  "proactive": "none",
+  "scope": "everywhere",
+  "sticker_style": "元气可爱风，小黄龙打招呼或比耶",
+  "stickers": "yes",
+  "tone": "short",
+  "voice_mode": "replies",
+  "voice_speaker": "zh_female_sajiaoxuemei_uranus_bigtts"
+}

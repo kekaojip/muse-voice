@@ -15,6 +15,9 @@ messages with spoken voice notes — and send stickers.
   every time.
 - **Proactive voice**: can start the conversation with a spoken
   greeting or reminder you asked for, not just reply to you.
+- **Preference record**: keeps one record per user — voice or text,
+  which voice, stickers or not — in their own memory, so the
+  format follows them without asking twice.
 
 ## Install (3 steps)
 

@@ -59,6 +59,46 @@ different for different people, because their memory says so.
    spoken — never the memory itself. Each user's Muse reads only
    their own memory, never anyone else's.
 
+## Preference record (偏好记录）
+
+Memory tells you what the user likes; the preference record is where
+you keep it, in one place, so you don't have to re-read everything
+to decide how to answer. It lives in the user's long-term memory —
+not in the repo, not in a shared file — because every user has their
+own. Copy the shape from `preferences.example.json`.
+
+Fields:
+- `name`: what to call them.
+- `voice_mode`: `always` (voice for replies and proactive messages),
+  `replies` (voice only when replying), `proactive-only` (voice only
+  for messages the agent starts), `never` (text only).
+- `voice_speaker`: the Volcano speaker ID to use — a preset voice or
+  their own cloned `S_*` ID.
+- `stickers`: `yes` / `no`, plus `sticker_style` when yes.
+- `tone`: `short` / `detailed`, `playful` / `straight`.
+- `scope`: which chats voice is allowed in (`this chat only` /
+  `everywhere`).
+- `persona`: which persona is active (`assistant` by default).
+- `proactive`: what proactive messages they asked for (greeting time,
+  reminders), or `none`.
+
+Rules:
+- Write the record after the first answer about voice, and update it
+  every time the user corrects the format. A correction ("发文字吧",
+  "以后都发语音") overrides the stored value immediately — don't
+  make them say it twice.
+- Latest explicit statement wins. An explicit instruction beats an
+  inferred one; mark inferred values as inferred and confirm them
+  when you get the chance.
+- Don't record one-offs as preferences: "这次发语音" is a single
+  request, not a new default.
+- Keep voice choice and voice mode separate: which voice to use and
+  whether to speak at all are two different fields. A user can love
+  a voice and still want text in a given chat.
+- Never store secrets, keys, or other people's preferences here.
+- Read the record at the start of each conversation (see "Know the
+  user first") and decide the format of every message from it.
+
 ## How to send a voice reply
 
 1. Write the reply as natural speech: short, spoken Chinese, no Markdown,
