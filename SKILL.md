@@ -14,15 +14,16 @@ voice notes and attaches them in chat. It can also make and send stickers.
 1. Get a Volcano Engine API key: https://www.volcengine.com/ — console,
    search 语音合成, enable the service and seed-tts-2.0, create an app,
    copy the API key.
-2. Copy the example env file and fill in the key (never commit the real key):
-   ```bash
-   cp .env.example .env
-   # edit .env: VOLCENGINE_API_KEY=your-key-here
-   export $(grep -v '^#' .env | xargs)
-   ```
-3. Pick a voice in `.env` (`MUSE_VOICE_SPEAKER`). Default is the sweet
-   female voice `zh_female_sajiaoxuemei_uranus_bigtts`. See `voices.md`
-   for the tested list.
+2. Fill in the key in the secure form in your Muse chat: ask Muse to
+   connect Volcano TTS and it will show a secure entry card. The key goes
+   to Muse's secure storage — never in chat, never in a file — and the
+   skill uses it automatically.
+   Standalone fallback (running `scripts/say.py` outside Muse): copy
+   `.env.example` to `.env`, fill in `VOLCENGINE_API_KEY`, and export it.
+3. Pick a voice in `.env` (`MUSE_VOICE_SPEAKER`) or by asking Muse.
+   Default is the sweet female voice
+   `zh_female_sajiaoxuemei_uranus_bigtts`. See `voices.md` for the
+   tested list.
 
 ## How to send a voice reply
 
@@ -102,9 +103,10 @@ funny / sarcastic / work-mood) and make more in the style they pick.
 
 ## Failures
 
-- Missing key: the script prints how to set `VOLCENGINE_API_KEY`. Don't
-  invent a key, don't ask the user to paste one in chat — point them at
-  the `.env` file.
+- Missing key: the script prints how to fill it in — secure form in
+  Muse chat first, `VOLCENGINE_API_KEY` otherwise. Don't invent a key,
+  don't ask the user to paste one in chat — point them at the secure
+  form or the `.env` file.
 - API rejection (e.g. resource not granted, HTTP 403): tell the user to
   check that seed-tts-2.0 is enabled for their app in the Volcano
   console, then wait a few minutes and retry once — authorization can

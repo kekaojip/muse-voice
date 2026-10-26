@@ -22,16 +22,15 @@ messages with spoken voice notes — and send stickers.
 2. Get a Volcano Engine API key: https://www.volcengine.com/ — console,
    search 语音合成, enable the service and seed-tts-2.0, create an app,
    copy the API key.
-3. Fill in the key and pick a voice:
-   ```bash
-   cp .env.example .env
-   # edit .env: VOLCENGINE_API_KEY=your-key-here
-   export $(grep -v '^#' .env | xargs)
-   ```
+3. Fill in the key in the secure form in your Muse chat: ask Muse to
+   connect Volcano TTS and it will show a secure entry card. The key is
+   stored in Muse's secure storage — never in chat, never in a file.
+   (Running the script outside Muse? Copy `.env.example` to `.env` and
+   fill in `VOLCENGINE_API_KEY` instead.)
 
 That's it. Ask your Muse to "send me a voice message" and it will speak.
 Your key is yours — TTS usage is billed to your own Volcano account,
-and the key never leaves your machine (it lives only in `.env`).
+and the key never leaves secure storage (or your own `.env`).
 
 ## Personas (角色卡)
 

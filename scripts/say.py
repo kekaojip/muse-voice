@@ -3,10 +3,17 @@
 
 Part of the muse-voice skill. Reads narration text from a file, synthesizes
 it with the user's own Volcano API key, and saves an MP3 plus a metadata
-sidecar. The key is never stored in this file: it comes from the
-VOLCENGINE_API_KEY environment variable (see .env.example).
+sidecar. The key is never stored in this file and never pasted in chat.
 
-Setup:
+How the key is provided (first match wins):
+  1. Inside Muse (recommended): fill the key in the secure form in your
+     Muse chat. Muse stores it in secure storage and this script uses it
+     through the custom.volcengine-openspeech credential — no key in any
+     file, no key in chat.
+  2. Standalone fallback: set the VOLCENGINE_API_KEY environment variable
+     (see .env.example).
+
+Setup (standalone only):
   cp .env.example .env   # then fill in your key
   export $(grep -v '^#' .env | xargs)   # or use direnv / your shell
 
@@ -33,6 +40,18 @@ URL = "https://openspeech.bytedance.com/api/v3/tts/unidirectional"
 ALLOWED_HOSTS = ["openspeech.bytedance.com"]
 RESOURCE = "seed-tts-2.0"
 DEFAULT_SPEAKER = "zh_female_sajiaoxuemei_uranus_bigtts"
+# Muse secure-storage credential name (used when no env key is set).
+CREDENTIAL = "custom.volcengine-openspeech"
+
+
+def _secure_key_available() -> bool:
+    """True when Muse's secure credential store can supply the key."""
+    try:
+        sys.path.insert(0, "/opt/muse/skills/custom-connector-setup/bin")
+        import dynamic_credentials  # noqa: F401
+        return True
+    except Exception:
+        return False
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -49,11 +68,16 @@ def main() -> int:
     args = parser.parse_args()
 
     api_key = os.environ.get("VOLCENGINE_API_KEY", "").strip()
+    use_secure_storage = False
     if not api_key and not args.dry_run:
-        print("TTS failed: VOLCENGINE_API_KEY is not set. Copy .env.example "
-              "to .env, fill in your Volcano API key, and export it.",
-              file=sys.stderr)
-        return 1
+        if _secure_key_available():
+            use_secure_storage = True
+        else:
+            print("TTS failed: no Volcano API key. In Muse, fill the key in "
+                  "the secure form in chat; outside Muse, set "
+                  "VOLCENGINE_API_KEY (see .env.example).",
+                  file=sys.stderr)
+            return 1
 
     with open(args.text_file, "r", encoding="utf-8") as f:
         text = f.read().strip()
@@ -91,7 +115,11 @@ def main() -> int:
           f"characters={len(text)}, request_id={request_id}. No automatic retries.")
     request = urllib.request.Request(URL, data=body, method="POST")
     request.add_header("Content-Type", "application/json")
-    request.add_header("X-Api-Key", api_key)
+    if use_secure_storage:
+        from dynamic_credentials import add_surrogate_to_request
+        add_surrogate_to_request(request, CREDENTIAL, allowed_hosts=ALLOWED_HOSTS)
+    else:
+        request.add_header("X-Api-Key", api_key)
     request.add_header("X-Api-Request-Id", request_id)
     request.add_header("X-Api-Resource-Id", RESOURCE)
     try:
