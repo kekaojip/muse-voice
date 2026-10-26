@@ -49,10 +49,13 @@ voice notes and attaches them in chat. It can also make and send stickers.
 ## Personas (角色卡)
 
 Inspired by SillyTavern's character cards. Each persona is one JSON file
-in `personas/` with these fields: `name`, `description`, `personality`,
-`scenario`, `speaking_style`, `voice` (Volcano speaker ID), `voice_label`,
-`first_message`, `example_dialogue` (short user/char exchanges showing
-how the character talks), `sticker_style`.
+in `personas/` in chara_card_v2 format (`spec_version: "2.0"`, so the
+same file imports straight into SillyTavern). Fields under `data`:
+`name`, `description`, `personality`, `scenario`, `speaking_style`,
+`first_mes`, `mes_example` (short user/char exchanges showing how the
+character talks), `sticker_style`, `creator_notes`, `tags`. The voice
+lives at `data.extensions.muse-voice.speaker` (Volcano speaker ID)
+with a human-readable `voice_label` beside it.
 
 Built-in personas:
 
@@ -60,10 +63,11 @@ Built-in personas:
   `zh_female_sajiaoxuemei_uranus_bigtts`.
 - `girlfriend.json`: 温柔甜美的女友，voice 女友音（定制复刻）
   `S_58godekj2` — the author's own cloned voice; it only works with
-  the author's Volcano account. Other users: replace `voice` with
+  the author's Volcano account. Other users: replace `speaker` with
   your own cloned `S_*` ID or a preset voice (see `voices.md`).
 - `boyfriend.json`: 稳重幽默的男友，voice 刘飞
-  `zh_male_liufei_uranus_bigtts`.
+  `zh_male_liufei_uranus_bigtts` (placeholder — the author rejected
+  this voice; a replacement is pending).
 
 Rules:
 
@@ -71,7 +75,8 @@ Rules:
   ("换成女友" / "换成男友" / "换回助手"), and say which persona is now
   active in the first reply after switching.
 - When a persona is active, speak in its `speaking_style`, use its
-  `voice` for synthesis, and use its `sticker_style` for stickers.
+  `extensions.muse-voice.speaker` for synthesis, and use its
+  `sticker_style` for stickers.
   The persona changes how the agent talks, not what it knows: memory,
   facts and promises stay the same across personas.
 - Users can add their own persona by copying one JSON file, editing the

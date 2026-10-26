@@ -36,14 +36,15 @@ and the key never leaves secure storage (or your own `.env`).
 ## Personas (角色卡)
 
 Three built-in personas live in `personas/` — one JSON file each,
-following SillyTavern's character-card idea (name, personality,
-scenario, example dialogue) plus a Volcano voice and a sticker style:
+in chara_card_v2 format (`spec_version: "2.0"`, importable into
+SillyTavern as-is) plus a Volcano voice at
+`data.extensions.muse-voice.speaker` and a sticker style:
 
 - **助手** (`assistant.json`, default): 干练贴心，voice 撒娇学妹.
 - **女友** (`girlfriend.json`): 温柔甜美，voice 女友音（定制复刻
   `S_58godekj2`，作者自己克隆的声音，只在作者账号上可用；换成
   自己的复刻音色见 `voices.md`）.
-- **男友** (`boyfriend.json`): 稳重幽默，voice 刘飞.
+- **男友** (`boyfriend.json`): 稳重幽默，voice 刘飞（占位，待替换）.
 
 Switch with one sentence ("换成女友"). Add your own persona by
 copying a JSON file and editing the fields — no code changes.
