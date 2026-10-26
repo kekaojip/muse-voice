@@ -240,9 +240,11 @@ To add the user's own stickers: save the images they send into
 
 ### Sending principles
 
-- Send freely: every reply can carry a sticker. Don't overthink the
-  choice — a close-enough one is fine, and even when nothing fits
-  perfectly, send one anyway.
+- Don't send one on every message. Send a sticker when the moment
+  calls for it — a greeting, a reaction, encouragement, a joke that
+  landed, or answering a sticker the user sent — or at random in casual
+  conversation. Don't overthink the choice: a close-enough one is fine,
+  and when nothing fits, any pack sticker will do.
 - One at a time: at most one sticker per message, never a burst.
 - Packs only, never generate: pick the closest match from installed
   packs by label / keywords / mood; if nothing fits, send any sticker
