@@ -220,11 +220,29 @@ listening to samples; remember their choice.
 
 ## Stickers
 
-When the user asks for a sticker or meme, generate one image with the
-agent's image tool: a cute cartoon character, kawaii sticker style, thick
-white die-cut outline, plain background, no text unless the user asked
-for words on it. Attach it in chat on its own line. Offer a set (cute /
-funny / sarcastic / work-mood) and make more in the style they pick.
+Check pre-installed packs first: `stickers/packs/<pack>/` holds the
+image files plus a `manifest.json` (`pack`, `name`, `source`, and a
+`stickers` list of `file` / `label` / `mood` / `keywords`). Pick the
+sticker whose label or keywords match the moment (greeting, yes, laugh,
+speechless...) and attach it on its own line.
+
+To install a pack, run `scripts/fetch-stickers.sh <pack>` — it fetches
+that category from ChineseBQB (zhaoolee/ChineseBQB, open data source)
+and builds the manifest. Built-in pack: `huaji` (滑稽大佬, 125 stickers).
+Images are fetched on demand, not bundled in the repo, so the repo stays
+light. Only fetch packs you are comfortable redistributing — ChineseBQB
+collects images from the internet and has no LICENSE file, and some
+categories contain copyrighted characters or real people's faces.
+
+To add the user's own stickers: save the images they send into
+`stickers/packs/<pack>/` and run
+`python3 scripts/make-sticker-manifest.py <pack_dir> <pack_id> <pack_name>`.
+
+When no pack fits, generate one image with the agent's image tool: a
+cute cartoon character, kawaii sticker style, thick white die-cut
+outline, plain background, no text unless the user asked for words on
+it. Attach it in chat on its own line. Offer a set (cute / funny /
+sarcastic / work-mood) and make more in the style they pick.
 
 ## Failures
 
