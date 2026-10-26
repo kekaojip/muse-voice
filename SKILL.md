@@ -190,6 +190,16 @@ Setting it up (scheduled proactive voice):
 - Example: a morning greeting at 08:00 every day — the job reads
   memory for today's schedule, writes one or two spoken sentences,
   synthesizes, and sends voice + transcript.
+- Custom announcement: if the user gave the exact words for the
+  message, use them verbatim — that is a custom announcement.
+  Otherwise compose one or two sentences from memory.
+- Notifications as voice: a notification the agent already pushes
+  on a schedule (feed post, briefing, price alert, reminder) can be
+  delivered as voice + one sticker instead of text — but only when
+  the user asked for voice in that chat, and only one notification
+  kind at a time (wire each kind separately). Keep numbers, links
+  and decisions in text first; voice is the spoken version of the
+  same notice.
 - Only set up schedules the user explicitly asked for. Say the time
   and the content out loud when confirming, and let them cancel with
   one sentence.
