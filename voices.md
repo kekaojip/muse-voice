@@ -5,6 +5,8 @@ Set one in `.env` as `MUSE_VOICE_SPEAKER`.
 | Speaker ID | Label | Style |
 |---|---|---|
 | `zh_male_xionger_uranus_bigtts` | 熊二 (default) | Playful male, Xiong Er |
+| `ICL_uranus_zh_male_xiaosasuixing_tob` | 小飒随行 | Dashing male |
+| `ICL_uranus_zh_female_zhixingwenwan_tob` | 知性温婉 | Intellectual, gentle female |
 | `zh_female_sajiaoxuemei_uranus_bigtts` | 撒娇学妹 | Sweet, playful female |
 | `zh_female_tianmeixiaoyuan_uranus_bigtts` | 甜美校园 | Sweet campus female |
 | `zh_female_wenrouxiaoya_uranus_bigtts` | 温柔小雅 | Gentle female |
@@ -23,7 +25,7 @@ enable **both** models in the console or cloned voices fail
 (`55000000` resource mismatch, or HTTP 403 before the model is
 enabled; authorization can take a few minutes to take effect).
 
-Example: `personas/girlfriend.json` in this repo points at
-`S_58godekj2` (女友音), a voice cloned from the author's own video —
-it only works with the author's Volcano account. To use your own
-cloned voice, replace the `voice` field with your own `S_*` ID.
+Example: the author's own cloned voice is `S_58godekj2` (女友音,
+cloned from the author's own video) — it only works with the author's
+Volcano account. To use your own cloned voice, replace the `voice`
+field with your own `S_*` ID.

@@ -30,10 +30,10 @@ skills.sh 上有收录：https://skills.sh/kekaojip/muse-voice-chat/muse-voice-c
 `personas/` 里有三张内置角色卡，每种角色一个 JSON，chara_card_v2 格式（`spec_version: "2.0"`，可以直接导入 SillyTavern），音色在 `data.extensions.muse-voice-chat.speaker`，还有表情包风格：
 
 - **助手**（`assistant.json`，默认）：干练贴心，音色熊二。
-- **女友**（`girlfriend.json`）：温柔甜美，音色女友音（定制复刻 `S_58godekj2`，作者自己克隆的声音，只在作者账号上可用；换成自己的复刻音色见 `voices.md`）。
-- **男友**（`boyfriend.json`）：稳重幽默，音色刘飞（占位，待替换）。
+- **女**（`female.json`）：温柔甜美，音色知性温婉（`ICL_uranus_zh_female_zhixingwenwan_tob`）。
+- **男**（`male.json`）：稳重幽默，音色小飒随行（`ICL_uranus_zh_male_xiaosasuixing_tob`）。
 
-一句话切换（“换成女友”）。想加自己的角色，复制一个 JSON 改字段就行——不用改代码。
+一句话切换（“换成女” / “换成男”）。想加自己的角色，复制一个 JSON 改字段就行——不用改代码。
 
 ## 试一下
 

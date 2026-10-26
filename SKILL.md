@@ -134,18 +134,15 @@ Built-in personas:
 
 - `assistant.json` (default): 干练贴心的小助手，voice 熊二
   `zh_male_xionger_uranus_bigtts`.
-- `girlfriend.json`: 温柔甜美的女友，voice 女友音（定制复刻）
-  `S_58godekj2` — the author's own cloned voice; it only works with
-  the author's Volcano account. Other users: replace `speaker` with
-  your own cloned `S_*` ID or a preset voice (see `voices.md`).
-- `boyfriend.json`: 稳重幽默的男友，voice 刘飞
-  `zh_male_liufei_uranus_bigtts` (placeholder — the author rejected
-  this voice; a replacement is pending).
+- `female.json`: 温柔甜美的女生，voice 知性温婉
+  `ICL_uranus_zh_female_zhixingwenwan_tob`.
+- `male.json`: 稳重幽默的男生，voice 小飒随行
+  `ICL_uranus_zh_male_xiaosasuixing_tob`.
 
 Rules:
 
 - Default persona is the assistant. Switch only when the user asks
-  ("换成女友" / "换成男友" / "换回助手"), and say which persona is now
+  ("换成女" / "换成男" / "换回助手"), and say which persona is now
   active in the first reply after switching.
 - When a persona is active, speak in its `speaking_style`, use its
   `extensions.muse-voice-chat.speaker` for synthesis, and use its
@@ -251,7 +248,7 @@ To add the user's own stickers: save the images they send into
   packs by label / keywords / mood; if nothing fits, send any sticker
   from the packs. Never generate a sticker image — drawing is forbidden.
 - Stay in character: the sticker must match the current persona
-  (assistant / girlfriend / boyfriend) — never mix styles across
+  (assistant / female / male) — never mix styles across
   personas.
 - Follow the preference record: if the user's record says no stickers,
   send none. If it says yes, stickers follow their `sticker_style`.
