@@ -13,7 +13,8 @@ voice notes and attaches them in chat. It can also make and send stickers.
 
 1. Get a Volcano Engine API key: https://www.volcengine.com/ — console,
    search 语音合成, enable the service and seed-tts-2.0, create an app,
-   copy the API key.
+   copy the API key. (Cloned voices need seed-icl-2.0 enabled too —
+   see `voices.md`.)
 2. Fill in the key in the secure form in your Muse chat: ask Muse to
    connect Volcano TTS and it will show a secure entry card. The key goes
    to Muse's secure storage — never in chat, never in a file — and the
@@ -57,8 +58,10 @@ Built-in personas:
 
 - `assistant.json` (default): 干练贴心的小助手，voice 撒娇学妹
   `zh_female_sajiaoxuemei_uranus_bigtts`.
-- `girlfriend.json`: 温柔甜美的女友，voice 甜美校园
-  `zh_female_tianmeixiaoyuan_uranus_bigtts`.
+- `girlfriend.json`: 温柔甜美的女友，voice 女友音（定制复刻）
+  `S_58godekj2` — the author's own cloned voice; it only works with
+  the author's Volcano account. Other users: replace `voice` with
+  your own cloned `S_*` ID or a preset voice (see `voices.md`).
 - `boyfriend.json`: 稳重幽默的男友，voice 刘飞
   `zh_male_liufei_uranus_bigtts`.
 
@@ -110,5 +113,9 @@ funny / sarcastic / work-mood) and make more in the style they pick.
 - API rejection (e.g. resource not granted, HTTP 403): tell the user to
   check that seed-tts-2.0 is enabled for their app in the Volcano
   console, then wait a few minutes and retry once — authorization can
-  take a while to take effect. Don't retry in a tight loop.
+  take a while to take effect. Don't retry in a tight loop. For a
+  cloned voice (`S_*` speaker), the error is usually `55000000`
+  "resource ID is mismatched": the app also needs seed-icl-2.0
+  enabled — `scripts/say.py` already selects that resource for `S_*`
+  speakers automatically.
 - A failed or partial render is never delivered as finished.

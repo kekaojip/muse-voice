@@ -21,7 +21,8 @@ messages with spoken voice notes — and send stickers.
    Or copy the folder into `~/.claude/skills/muse-voice`.
 2. Get a Volcano Engine API key: https://www.volcengine.com/ — console,
    search 语音合成, enable the service and seed-tts-2.0, create an app,
-   copy the API key.
+   copy the API key. (Using a cloned voice? Also enable seed-icl-2.0 —
+   see "Custom / cloned voices" in `voices.md`.)
 3. Fill in the key in the secure form in your Muse chat: ask Muse to
    connect Volcano TTS and it will show a secure entry card. The key is
    stored in Muse's secure storage — never in chat, never in a file.
@@ -39,7 +40,9 @@ following SillyTavern's character-card idea (name, personality,
 scenario, example dialogue) plus a Volcano voice and a sticker style:
 
 - **助手** (`assistant.json`, default): 干练贴心，voice 撒娇学妹.
-- **女友** (`girlfriend.json`): 温柔甜美，voice 甜美校园.
+- **女友** (`girlfriend.json`): 温柔甜美，voice 女友音（定制复刻
+  `S_58godekj2`，作者自己克隆的声音，只在作者账号上可用；换成
+  自己的复刻音色见 `voices.md`）.
 - **男友** (`boyfriend.json`): 稳重幽默，voice 刘飞.
 
 Switch with one sentence ("换成女友"). Add your own persona by

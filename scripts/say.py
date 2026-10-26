@@ -22,10 +22,14 @@ Usage:
   python3 say.py --text-file hello.txt --output hello.mp3 --speaker zh_female_sajiaoxuemei_uranus_bigtts
   python3 say.py --text-file hello.txt --output hello.mp3 --dry-run
 
-Defaults: resource seed-tts-2.0, speaker zh_female_sajiaoxuemei_uranus_bigtts
+Defaults: speaker zh_female_sajiaoxuemei_uranus_bigtts
 (sweet female voice), mp3 at 24000 Hz. Text limit 1500 characters per call.
+Resource is auto-selected: preset voices use seed-tts-2.0, console-cloned
+voices (speaker IDs starting with "S_") use seed-icl-2.0 — enable both
+models in the console or cloned voices fail (see README).
 Get your key at https://www.volcengine.com/ — console > 语音合成 >
-create an app, enable seed-tts-2.0, copy the API key.
+create an app, enable seed-tts-2.0 (and seed-icl-2.0 for cloned voices),
+copy the API key.
 """
 import argparse
 import base64
@@ -38,8 +42,17 @@ import urllib.request
 
 URL = "https://openspeech.bytedance.com/api/v3/tts/unidirectional"
 ALLOWED_HOSTS = ["openspeech.bytedance.com"]
-RESOURCE = "seed-tts-2.0"
+# Preset voices use seed-tts-2.0; voices cloned in the Volcano console
+# (speaker IDs starting with "S_") use seed-icl-2.0. The console models
+# must both be enabled for the app's API key, or the service rejects the
+# call (55000000 resource mismatch / HTTP 403).
+RESOURCE_PRESET = "seed-tts-2.0"
+RESOURCE_CLONED = "seed-icl-2.0"
 DEFAULT_SPEAKER = "zh_female_sajiaoxuemei_uranus_bigtts"
+
+
+def resource_for_speaker(speaker: str) -> str:
+    return RESOURCE_CLONED if speaker.startswith("S_") else RESOURCE_PRESET
 # Muse secure-storage credential name (used when no env key is set).
 CREDENTIAL = "custom.volcengine-openspeech"
 
@@ -64,8 +77,13 @@ def main() -> int:
     parser.add_argument("--text-file", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--speaker", default=os.environ.get("MUSE_VOICE_SPEAKER", DEFAULT_SPEAKER))
+    parser.add_argument("--resource", default=None,
+                        help="Override the resource: seed-tts-2.0 for preset "
+                             "voices, seed-icl-2.0 for console-cloned (S_*) voices. "
+                             "Default: auto-selected from the speaker.")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
+    resource = args.resource or resource_for_speaker(args.speaker)
 
     api_key = os.environ.get("VOLCENGINE_API_KEY", "").strip()
     use_secure_storage = False
@@ -97,7 +115,7 @@ def main() -> int:
         print(json.dumps({
             "dry_run": True, "network_request": False,
             "characters": len(text), "speaker": args.speaker,
-            "resource": RESOURCE, "text_sha256": text_hash,
+            "resource": resource, "text_sha256": text_hash,
             "output": args.output,
         }, ensure_ascii=False))
         return 0
@@ -121,7 +139,7 @@ def main() -> int:
     else:
         request.add_header("X-Api-Key", api_key)
     request.add_header("X-Api-Request-Id", request_id)
-    request.add_header("X-Api-Resource-Id", RESOURCE)
+    request.add_header("X-Api-Resource-Id", resource)
     try:
         with urllib.request.build_opener(NoRedirect()).open(request, timeout=180) as resp:
             raw = resp.read()
@@ -166,7 +184,7 @@ def main() -> int:
     with open(args.output, "wb") as f:
         f.write(bytes(audio))
     meta = {
-        "complete": True, "request_id": request_id, "resource": RESOURCE,
+        "complete": True, "request_id": request_id, "resource": resource,
         "speaker": args.speaker, "sample_rate": 24000, "format": "mp3",
         "characters": len(text), "text_sha256": text_hash,
         "audio_sha256": hashlib.sha256(bytes(audio)).hexdigest(),
