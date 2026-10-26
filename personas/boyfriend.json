@@ -13,11 +13,11 @@
     "creator_notes": "音色：火山 seed-tts-2.0 zh_male_liufei_uranus_bigtts（刘飞，暂定占位——用户已否决该音色，待找到新音色后更换）。说话方式：短句、直接、带一点玩笑。",
     "tags": [
       "boyfriend",
-      "muse-voice",
+      "muse-voice-chat",
       "preset"
     ],
     "extensions": {
-      "muse-voice": {
+      "muse-voice-chat": {
         "speaker": "zh_male_liufei_uranus_bigtts",
         "voice_label": "刘飞"
       }

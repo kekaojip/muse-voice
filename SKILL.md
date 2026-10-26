@@ -1,5 +1,5 @@
 ---
-name: muse-voice
+name: muse-voice-chat
 description: 让你的 Muse 助手开口说话——用语音消息回复聊天、发表情包。先读用户的记忆，了解每个人喜欢怎么被回复，语音、表情包还是文字都按个人的偏好来。还能主动开口，比如用户约好的早上问候或提醒。用火山引擎 seed-tts-2.0（你自己的 API key）合成中文语音。用户让助手说话、发语音消息、念一段文字、发表情包，或者你想提供语音回复时用这个 skill。
 ---
 
@@ -127,7 +127,7 @@ same file imports straight into SillyTavern). Fields under `data`:
 `name`, `description`, `personality`, `scenario`, `speaking_style`,
 `first_mes`, `mes_example` (short user/char exchanges showing how the
 character talks), `sticker_style`, `creator_notes`, `tags`. The voice
-lives at `data.extensions.muse-voice.speaker` (Volcano speaker ID)
+lives at `data.extensions.muse-voice-chat.speaker` (Volcano speaker ID)
 with a human-readable `voice_label` beside it.
 
 Built-in personas:
@@ -148,7 +148,7 @@ Rules:
   ("换成女友" / "换成男友" / "换回助手"), and say which persona is now
   active in the first reply after switching.
 - When a persona is active, speak in its `speaking_style`, use its
-  `extensions.muse-voice.speaker` for synthesis, and use its
+  `extensions.muse-voice-chat.speaker` for synthesis, and use its
   `sticker_style` for stickers.
   The persona changes how the agent talks, not what it knows: memory,
   facts and promises stay the same across personas.

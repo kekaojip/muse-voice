@@ -1,4 +1,4 @@
-# muse-voice
+# muse-voice-chat
 
 让你的 Muse 开口说话。一个 skill，让 Muse 助手用语音消息回复聊天，还能发表情包。
 
@@ -12,14 +12,14 @@
 
 ## 安装（3 步）
 
-skills.sh 上有收录：https://skills.sh/kekaojip/muse-voice/muse-voice
+skills.sh 上有收录：https://skills.sh/kekaojip/muse-voice-chat/muse-voice-chat
 
 1. 克隆仓库并安装 skill：
    ```bash
-   git clone https://github.com/kekaojip/muse-voice.git
-   npx skills add kekaojip/muse-voice -g
+   git clone https://github.com/kekaojip/muse-voice-chat.git
+   npx skills add kekaojip/muse-voice-chat -g
    ```
-   或者把文件夹拷到 `~/.claude/skills/muse-voice`。
+   或者把文件夹拷到 `~/.claude/skills/muse-voice-chat`。
 2. 拿一个火山引擎 API key：https://www.volcengine.com/ —— 控制台搜「语音合成」，开通服务和 seed-tts-2.0，建应用、复制 API key。（用克隆音色？还要开通 seed-icl-2.0 —— 见 `voices.md` 里的“Custom / cloned voices”。）
 3. 在 Muse 对话里的安全表单填 key：让 Muse 连接 Volcano TTS，它会弹出安全录入卡。Key 存在 Muse 的安全存储里——不在聊天里，不在文件里。（在 Muse 之外跑脚本？把 `.env.example` 拷成 `.env`，填 `VOLCENGINE_API_KEY`。）
 
@@ -27,7 +27,7 @@ skills.sh 上有收录：https://skills.sh/kekaojip/muse-voice/muse-voice
 
 ## 角色卡（Personas）
 
-`personas/` 里有三张内置角色卡，每种角色一个 JSON，chara_card_v2 格式（`spec_version: "2.0"`，可以直接导入 SillyTavern），音色在 `data.extensions.muse-voice.speaker`，还有表情包风格：
+`personas/` 里有三张内置角色卡，每种角色一个 JSON，chara_card_v2 格式（`spec_version: "2.0"`，可以直接导入 SillyTavern），音色在 `data.extensions.muse-voice-chat.speaker`，还有表情包风格：
 
 - **助手**（`assistant.json`，默认）：干练贴心，音色撒娇学妹。
 - **女友**（`girlfriend.json`）：温柔甜美，音色女友音（定制复刻 `S_58godekj2`，作者自己克隆的声音，只在作者账号上可用；换成自己的复刻音色见 `voices.md`）。

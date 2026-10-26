@@ -13,11 +13,11 @@
     "creator_notes": "音色：火山 seed-tts-2.0 zh_female_sajiaoxuemei_uranus_bigtts（撒娇学妹，用户 2026-10-26 已选定为助手语音）。说话方式：中性干练、要点式。这是 Muse 在本对话的默认角色。",
     "tags": [
       "assistant",
-      "muse-voice",
+      "muse-voice-chat",
       "preset"
     ],
     "extensions": {
-      "muse-voice": {
+      "muse-voice-chat": {
         "speaker": "zh_female_sajiaoxuemei_uranus_bigtts",
         "voice_label": "撒娇学妹"
       }

@@ -13,11 +13,11 @@
     "creator_notes": "音色：火山 seed-icl-2.0 S_58godekj2（女友音，作者用女友语音复刻的定制音色，2026-10-26 已验证可用；只在作者账号上生效，他人需换成自己的 S_* ID）。说话方式：短句、口语、撒娇但不腻。",
     "tags": [
       "girlfriend",
-      "muse-voice",
+      "muse-voice-chat",
       "preset"
     ],
     "extensions": {
-      "muse-voice": {
+      "muse-voice-chat": {
         "speaker": "S_58godekj2",
         "voice_label": "女友音（定制复刻）"
       }

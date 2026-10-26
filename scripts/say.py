@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Volcano Engine OpenSpeech TTS (seed-tts-2.0) — portable helper.
 
-Part of the muse-voice skill. Reads narration text from a file, synthesizes
+Part of the muse-voice-chat skill. Reads narration text from a file, synthesizes
 it with the user's own Volcano API key, and saves an MP3 plus a metadata
 sidecar. The key is never stored in this file and never pasted in chat.
 
@@ -121,7 +121,7 @@ def main() -> int:
         return 0
 
     payload = {
-        "user": {"uid": "muse-voice"},
+        "user": {"uid": "muse-voice-chat"},
         "req_params": {
             "text": text,
             "speaker": args.speaker,
